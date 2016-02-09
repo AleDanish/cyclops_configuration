@@ -1,7 +1,12 @@
 #!/bin/bash
 echo "-> Cyclops Configuration"
-
-myip=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
+if [ "$1" == "" ]; then
+   echo "An argument is required"
+   exit 1
+else
+   myip=$1
+   echo $myip
+fi
 
 echo "-> Cyclops-udr configuration file"
 sudo python string_substitution.py /home/ubuntu/cyclops-udr/src/main/webapp/WEB-INF/configuration.txt InfluxDBURL= http://$myip:8086
