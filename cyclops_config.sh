@@ -17,7 +17,7 @@ sudo python string_substitution.py /home/ubuntu/cyclops-rc/src/main/webapp/WEB-I
 
 echo "-> Cyclops-billing configuration file"
 sudo python string_substitution.py /home/ubuntu/cyclops-billing/src/main/webapp/WEB-INF/configuration.txt 'RcServiceUrl==' http://$myip:8086/rc
-sudo python string_substitution.py /home/ubuntu/cyclops-udr/install/openstack/config/config.js url: ' "http://10.20.30.40:8086/db/udr_service",'
+sudo python string_substitution_js.py /home/ubuntu/cyclops-udr/install/openstack/config/config.js url: ' "http://'$myip':8086/db/udr_service",' ' "http://'$myip':8086/db/grafana",'
 
 echo "-> Finish setting up Cyclops!"
 
